@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<div class="row">
+
+    <h1>Domicilio</h1>
+    <hr class="  red">
+
+
+    <div class="row">
+
+        <!-- formulario datos catalogos-->
+            <div>
+                <!-- encabezdo seccion-->
+                <div class="row">
+                        <!--<h2 debug-cve-control-ui="subtitu">Domicilio</h2>-->
+                        <hr class=" col-sm-12 red">
+                </div>
+                <!-- fila codigo postal -->
+
+                <form name="formcp" ng-submit="vm.consultaCp()">
+                    <div class="row">
+                        <div class="col-md-4 required">
+                            <label class="control-label required ">Código Postal<span class="field">
+                    </span>
+                            </label>
+                            <div class="form-group  input-group margin-bottom-sm">
+                                <span  class="input-group-addon"><i class="fa fa-compass fa-fw"></i></span>
+                                <input  ng-disabled="vm.finalizado == true" class="ns_ form-control" direction="ltr" maxlength="5" name="domicilioNacionalDTOcodigoPostal"
+                                       ng-model="vm.cp"
+                                       only-numbers placeholder="Código Postal" required="required"
+                                       type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <div class="ng-hide ng-inactive" role="alert">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="pull-left buttonMarginTop">
+                                <button  ng-if="(vm.finalizado == false || vm.finalizado == undefined)"  class="btn btn-default" ng-class="'btn-default'" type="submit">&nbsp;Buscar&nbsp;
+                                    <i aria-hidden="true" class="fa fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </form>
+                <!-- seccion de datos catalogos -->
+                <div>
+                    <div class="row">
+                      <!--  <h5> Verfica los datos:</h5> -->
+                    </div>
+                    <!--inicio primera fila de datos -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label">País<span class="field"><span
+                                    class=" form-text ng-scope"></span>
+                    </span>
+                            </label>
+                            <div class="form-group  input-group margin-bottom-sm">
+                                <span  class="input-group-addon"><i class="fa fa fa-globe  fa-fw"></i></span>
+                                <input class="ns_ form-control "
+                                       direction="ltr" disabled="disabled" ng-model="vm.pais"
+                                       placeholder="México"
+                                       value="México">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <div class="ng-hide ng-inactive" role="alert">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="control-label">Estado<span class="field"></span></label>
+                            <div class="form-group  input-group margin-bottom-sm">
+                                <span  class="input-group-addon"><i class="fa fa-map-o fa-fw"></i></span>
+                                <input class="ns_ form-control "
+                                       direction="ltr" disabled="disabled"
+                                       name="domicilioNacionalDTOestadoPaisdescEstadoPais"
+                                       ng-model="vm.estado" placeholder="Estado o Distrito Federal"
+                                       type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <div class="ng-hide ng-inactive" role="alert">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="control-label">Municipio o Delegación<span class="field"></span></label>
+                            <div class="form-group input-group margin-bottom-sm">
+                                <span  class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+                                <input class="ns_ form-control input-group margin-bottom-sm"
+                                       direction="ltr" disabled="disabled"
+                                       name="domicilioNacionalDTOmunicipiodescMunicipio"
+                                       ng-model="vm.mnpio" placeholder="Municipio o Delegación"
+                                       type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <div class="ng-hide ng-inactive" role="alert">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--fin  primera fila de datos -->
+                    <!--inicio segunda fila de datos -->
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <label class="control-label">Ciudad<span class="field"><span
+                                    class="required form-text ng-scope"></span>
+                    </span>
+                            </label>
+                            <div class="form-group input-group margin-bottom-sm">
+                                <span  class="input-group-addon"><i class=" fa fa-building fa-fw"></i></span>
+                                <input class="ns_ form-control"
+                                       direction="ltr" disabled="disabled"
+                                       name="domicilioNacionalDTOlocalidad"
+                                       ng-model="vm.ciudad"
+                                       placeholder="Ciudad" required="required">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <div class="ng-hide ng-inactive" role="alert">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="control-label">Tipo asentamiento<span class="field"></span></label>
+                            <div class="form-group  input-group margin-bottom-sm">
+                                <span  class="input-group-addon"><i class="fa fa-map-pin fa-fw"></i></span>
+                                <input class="ns_ form-control "
+                                       direction="ltr" disabled="disabled"
+                                       name="domicilioNacionalDTOasentamientodescTipoAsentamiento"
+                                       ng-model="vm.tipoAsenta" placeholder="Tipo asentamiento"
+                                       type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <div class="ng-hide ng-inactive" role="alert">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="control-label">Nombre del asentamiento<span class="field"></span></label>
+                            <div class="form-group  input-group margin-bottom-sm">
+                                <span  class="input-group-addon"><i class="fa fa-pencil-square-o fa-fw"></i></span>
+                                <input class="ns_ form-control"
+                                       debug-cve-control-ui="text" direction="ltr"
+                                       disabled="disabled"
+                                       name="domicilioNacionalDTOasentamientodescAsentamiento" ng-model="vm.asenta"
+                                       placeholder="Nombre asentamiento" type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                <div class="ng-hide ng-inactive" role="alert">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--fin  segunda fila de datos -->
+                </div>
+                <!-- fin seccion de datos catalogos -->
+            </div>
+
+
+            <!-- seccion sin catalogos -->
+
+            <div>
+                <div class="row">
+                    <h5> Datos adicionales</h5>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label class="control-label">Calle<span class="field"><span
+                                class="form-text ng-scope"></span>
+                                </span>
+                        </label>
+                        <div class="form-group input-group margin-bottom-sm">
+                            <span  class="input-group-addon"><i class="fa fa-road fa-fw"></i></span>
+                            <input  ng-disabled="vm.finalizado == true" class="ns_ form-control "
+                                   direction="ltr"
+                                   ng-model="vm.calle"  type="text">
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            <div role="alert"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">Número exterior<span class="field"><span
+                                class=" form-text ng-scope"></span>
+                                </span>
+                        </label>
+                        <div class="form-group input-group margin-bottom-sm">
+                            <span  class="input-group-addon"><i class="fa fa-home fa-fw"></i></span>
+                            <input  ng-disabled="vm.finalizado == true" class="ns_ form-control"
+                                   direction="ltr"
+                                   ng-model="vm.numext" type="text">
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            <div role="alert"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">Número interior<span class="field"><span
+                                class="form-text ng-scope"></span>
+                                </span>
+                        </label>
+                        <div class="form-group input-group margin-bottom-sm">
+                            <span  class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
+                            <input  ng-disabled="vm.finalizado == true" class="ns_ form-control"
+                                   direction="ltr"
+                                   ng-model="vm.numint" required="required" type="text">
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            <div role="alert">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    <!-- botones-->
+    <div class="row">
+        <br/> </br>
+        <hr class=" col-sm-12 red">
+        <br/> </br>
+        <div class="col-md-4">
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined)"   class="btn btn-primary  fa fa-chevron-left  form-control  " href="#!/datosgenerales"
+               ng-click="vm.saveData()"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+                <i aria-hidden="true" class="fa fa-floppy-o "></i>
+            </a>
+
+            <a  ng-if="(vm.finalizado == true)"   class="btn btn-primary  fa fa-chevron-left  form-control  " href="#!/datosgenerales"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a  ng-if="(vm.finalizado == false || vm.finalizado == undefined)"  class="btn btn-primary form-control fa fa-home " href="#!/mainform" ng-click="vm.saveData()"
+               type="submit"> &nbsp; Pantalla principal &nbsp;
+                <i aria-hidden="true" class="fa fa-floppy-o "></i>
+            </a>
+            <a   ng-if="(vm.finalizado == true)"  class="btn btn-primary form-control fa fa-home " href="#!/mainform"
+               type="submit"> &nbsp; Pantalla principal &nbsp;
+            </a>
+        </div>
+        <div class="col-md-4" ng-if="vm.convocatoria == 327">
+
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined) && vm.convocatoria == 327"  class="btn btn-primary  fa fa-floppy-o form-control  " href="#!/datosacademicos" ng-click="vm.saveData()"
+               type="submit">
+                &nbsp; Siguiente &nbsp;
+                <i aria-hidden="true" class="fa fa-chevron-right"></i>
+            </a>
+            <a  ng-if="(vm.finalizado == true && vm.convocatoria == 327)"   class="btn btn-primary  form-control  " href="#!/datosacademicos"
+               type="submit">
+                &nbsp; Siguiente &nbsp;
+                <i aria-hidden="true" class="fa fa-chevron-right"></i>
+            </a>
+        </div>
+
+
+        <div class="col-md-4" ng-if="vm.convocatoria != 327">
+
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined) && vm.convocatoria != 327"  class="btn btn-primary  fa fa-floppy-o form-control  "  href="#!/datossolicitud" ng-click="vm.saveData()"
+               type="submit">
+                &nbsp; Siguiente &nbsp;
+                <i aria-hidden="true" class="fa fa-chevron-right"></i>
+            </a>
+            <a  ng-if="(vm.finalizado == true && vm.convocatoria != 327)"   class="btn btn-primary  form-control  "  href="#!/datossolicitud"
+                type="submit">
+                &nbsp; Siguiente &nbsp;
+                <i aria-hidden="true" class="fa fa-chevron-right"></i>
+            </a>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+

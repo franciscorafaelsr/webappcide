@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>aviso de privacidad</title>
+</head>
+<body>
+
+<div class='ng-modal' ng-if='show'>
+    <div class='ng-modal-overlay'></div>
+    <div class='ng-modal-dialog' ng-if='show' ng-style='dialogStyle'>
+        <!--<div class='ng-modal-close' ng-click='hideModal()'>X</div>-->
+        <br class='ng-modal-dialog-content'>
+
+
+        <div class="col-md-12">
+            <img height="75" src="resources/logoDECIDETEconv.png" width="125">
+            <h1>AVISO IMPORTANTE </h1>
+            <hr class="red">
+        <br>
+            <i class="fa fa-exclamation-triangle fa-3x fa-pull-left fa-border" aria-hidden="true"></i>
+            <H3>Acepto que en caso de incumplimiento de cualquiera de los requisitos establecidos en la convocatoria mi
+                participación en el proceso de admisión sea cancelada.
+            </H3>
+        <br><br>
+
+            <hr class="red">
+            <button class="ns_ form-control btn btn-primary fa fa-eye "  ng-click=save()>Aceptar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

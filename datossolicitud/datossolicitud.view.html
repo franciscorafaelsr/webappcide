@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<div class="row">
+    <h1>Datos relacionados con el programa</h1>
+    <hr class=" red">
+
+    <div class="row">
+
+            <div>
+                <div class="row">
+                    <div class="row">
+                        <label></label>
+                        <h2 debug-cve-control-ui="subtitu">Programa</h2>
+                        <hr class="  red">
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Respuesta</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tbody>
+                <tr ng-if="vm.convocatoria == 327">
+                    <td>
+                        <label class="ng-pristine ng-untouched ng-valid ng-valid-required" ng-disabled=""
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Cuál es el programa de tu
+                            interés?</label>
+                    </td><td>
+                    <div class="form-group input-group margin-bottom-sm ">
+                    <span class="input-group-addon"><i class="fa fa-heart-o fa-fw"></i></span>
+                    <select ng-disabled="vm.finalizado == true" class="ns_ form-control"
+                                ng-model="vm.licenciaturaschosse"
+                                ng-options="item.valor for item in  vm.licenciaturaoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                    <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="ng-pristine ng-untouched ng-valid ng-valid-required" ng-disabled=""
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Fecha para presentar la Prueba de Aptitud Académica?</label>
+                    </td><td>
+                    <div class="form-group input-group margin-bottom-sm ">
+                    <span  class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true" class="ns_ form-control"
+                                ng-model="vm.fechasexamen"
+                                ng-options="item.valor for item in  vm.fechasexamenoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                        <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    </div></td>
+                </tr>
+
+                <tr>
+
+                </tr>
+                </tbody>
+            </table>
+        <div>
+
+            <label class="ng-pristine ng-untouched ng-valid ng-valid-required" ng-disabled=""
+                   ng-required="0"
+                   tornado-field-type="label"> ¿Motivos para ingresar al
+                CIDE?</label>
+            <textarea
+                    ng-disabled="vm.finalizado == true" class="ns_ form-control noResizeTextArea ng-pristine ng-untouched ng-valid ng-binding ng-valid-maxlength ng-valid-required"
+                    direction="ltr" maxlength="5000" ng-maxlength="5000"
+                    ng-model="vm.motivos"
+                    placeholder="Descripción de tus motivos"></textarea>
+            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+
+        </div>
+
+
+            <div class="row">
+                <div class="row">
+                    <label></label>
+                    <h2 debug-cve-control-ui="subtitu">Información adicional</h2>
+                    <hr class="  red">
+                </div>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Respuesta</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tbody>
+                <tr ng-if="vm.convocatoria == 327">
+                    <td>
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Quién es tu asesor
+                            vocacional?</label>
+                    </td>
+                    <td>
+                    <div class="form-group input-group margin-bottom-sm ">
+                    <span class="input-group-addon"><i class="fa fa-user-secret fa-fw"></i></span>
+                        <input ng-disabled="vm.finalizado == true" class="ns_ form-control ng-pristine ng-untouched ng-valid ng-binding ng-valid-minlength ng-valid-maxlength ng-valid-required"
+                               direction="ltr" maxlength="256"
+                               ng-maxlength="256"
+                               ng-model="vm.acesorvocacional"
+                               placeholder="Asesor Vocacional" type="text">
+                        <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Algún familiar estudia o
+                            estudió en el CIDE?</label>
+                    </td>
+                    <td>
+                        <div class="form-group input-group margin-bottom-sm ">
+                    <span class="input-group-addon"><i class="fa fa-graduation-cap fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true" class="ns_ form-control"
+                                ng-model="vm.familiarcide"
+                                ng-options="item.valor for item in  vm.familiarcideoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                        <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="ng-pristine ng-untouched ng-valid ng-valid-required" ng-disabled=""
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Algún familiar trabaja o
+                            trabajó en el CIDE?</label>
+                    </td><td>
+                        <div class="form-group input-group margin-bottom-sm ">
+                        <span  class="input-group-addon"><i class="fa fa-briefcase fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true" class="ns_ form-control"
+                                ng-model="vm.familiarcidetrabaja"
+                                ng-options="item.valor for item in  vm.familiarcidetrabajaoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                        <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    </div>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+
+    </div>
+
+
+    <!-- botones-->
+    <div class="row">
+        <br/> </br>
+        <hr class=" col-sm-12 red">
+        <br/> </br>
+        <div class="col-md-4" ng-if="vm.convocatoria == 327" >
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined) && vm.convocatoria == 327"  class="btn btn-primary  fa fa-chevron-left  form-control  " href="#!/datosacademicos"
+               ng-click="vm.saveData()"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+                <i aria-hidden="true" class="fa fa-floppy-o "></i>
+            </a>
+            <a ng-if="(vm.finalizado == true) && vm.convocatoria == 327"  class="btn btn-primary  fa fa-chevron-left  form-control  " href="#!/datosacademicos"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+            </a>
+        </div>
+
+        <div class="col-md-4" ng-if="vm.convocatoria != 327" >
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined) && vm.convocatoria != 327"  class="btn btn-primary  fa fa-chevron-left  form-control  " href="#!/domicilioResidencia"
+               ng-click="vm.saveData()"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+                <i aria-hidden="true" class="fa fa-floppy-o "></i>
+            </a>
+            <a ng-if="(vm.finalizado == true) && vm.convocatoria != 327"  class="btn btn-primary  fa fa-chevron-left  form-control  "  href="#!/domicilioResidencia"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined)"  class="btn btn-primary form-control fa fa-home " href="#!/mainform" ng-click="vm.saveData()"
+               type="submit"> &nbsp; Pantalla principal &nbsp;
+                <i aria-hidden="true" class="fa fa-floppy-o "></i>
+            </a>
+            <a ng-if="(vm.finalizado == true)"  class="btn btn-primary form-control fa fa-home " href="#!/mainform"
+               type="submit"> &nbsp; Pantalla principal &nbsp;
+            </a>
+        </div>
+        <div class="col-md-4" >
+
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined)"  class="btn btn-primary  fa fa-floppy-o form-control  " href="#!/datossocioeco" ng-click="vm.saveData()"
+               type="submit">
+                &nbsp; Siguiente &nbsp;
+                <i aria-hidden="true" class="fa fa-chevron-right"></i>
+            </a>
+
+            <a ng-if="(vm.finalizado == true)"  class="btn btn-primary form-control  " href="#!/datossocioeco"
+               type="submit">
+                &nbsp; Siguiente &nbsp;
+                <i aria-hidden="true" class="fa fa-chevron-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+

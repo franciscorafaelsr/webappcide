@@ -1,0 +1,63 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/app-component/toaster.min.js" />
+        <item url="file://$PROJECT_DIR$/app-services/authentication.service.min.js" />
+        <item url="file://$PROJECT_DIR$/app-services/cat.service.min.js" />
+        <item url="file://$PROJECT_DIR$/app-services/file.service.min.js" />
+        <item url="file://$PROJECT_DIR$/app-services/flash.service.min.js" />
+        <item url="file://$PROJECT_DIR$/app-services/pdf.service.min.js" />
+        <item url="file://$PROJECT_DIR$/app-services/user.service.local-storage.min.js" />
+        <item url="file://$PROJECT_DIR$/app-services/user.service.min.js" />
+        <item url="file://$PROJECT_DIR$/app.min.js" />
+        <item url="file://$PROJECT_DIR$/convocatoria/convocatoria.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/datosacademicos/datosAcademicos.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/datosgenerales/datosGenerales.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/datossocioeco/datossocioeco.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/datossolicitud/datossolicitud.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/directives/capitalize.directive.min.js" />
+        <item url="file://$PROJECT_DIR$/directives/file.directive.min.js" />
+        <item url="file://$PROJECT_DIR$/directives/modalDialog.directive.min.js" />
+        <item url="file://$PROJECT_DIR$/directives/number.directive.min.js" />
+        <item url="file://$PROJECT_DIR$/directives/tooltip.directive.min.js" />
+        <item url="file://$PROJECT_DIR$/domicilioresidencia/domicilioResidencia.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/ejemplo campo/app.min.js" />
+        <item url="file://$PROJECT_DIR$/fileupload/fileupload.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/home/home.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/login/login.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/mainform/mainForm.controller.min.js" />
+        <item url="file://$PROJECT_DIR$/register/register.controller.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app-component/toaster.min.js" />
+      <root url="file://$PROJECT_DIR$/app-services/authentication.service.min.js" />
+      <root url="file://$PROJECT_DIR$/app-services/cat.service.min.js" />
+      <root url="file://$PROJECT_DIR$/app-services/file.service.min.js" />
+      <root url="file://$PROJECT_DIR$/app-services/flash.service.min.js" />
+      <root url="file://$PROJECT_DIR$/app-services/pdf.service.min.js" />
+      <root url="file://$PROJECT_DIR$/app-services/user.service.local-storage.min.js" />
+      <root url="file://$PROJECT_DIR$/app-services/user.service.min.js" />
+      <root url="file://$PROJECT_DIR$/app.min.js" />
+      <root url="file://$PROJECT_DIR$/convocatoria/convocatoria.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/datosacademicos/datosAcademicos.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/datosgenerales/datosGenerales.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/datossocioeco/datossocioeco.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/datossolicitud/datossolicitud.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/directives/capitalize.directive.min.js" />
+      <root url="file://$PROJECT_DIR$/directives/file.directive.min.js" />
+      <root url="file://$PROJECT_DIR$/directives/modalDialog.directive.min.js" />
+      <root url="file://$PROJECT_DIR$/directives/number.directive.min.js" />
+      <root url="file://$PROJECT_DIR$/directives/tooltip.directive.min.js" />
+      <root url="file://$PROJECT_DIR$/domicilioresidencia/domicilioResidencia.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/ejemplo campo/app.min.js" />
+      <root url="file://$PROJECT_DIR$/fileupload/fileupload.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/home/home.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/login/login.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/mainform/mainForm.controller.min.js" />
+      <root url="file://$PROJECT_DIR$/register/register.controller.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

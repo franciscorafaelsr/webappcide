@@ -1,0 +1,120 @@
+﻿(function () {
+    'use strict';
+
+    angular
+        .module('app', ['ngRoute', 'ngCookies','ngAnimate','toaster', 'ngSanitize'])
+        .config(config)
+        .run(run);
+
+    config.$inject = ['$routeProvider', '$locationProvider','$compileProvider'];
+
+    function config($routeProvider, $locationProvider,$compileProvider) {
+        $routeProvider
+
+            .when('/', {
+                controller: 'HomeController',
+                templateUrl: 'home/home.view.html',
+                controllerAs: 'vm'
+            })
+
+
+            .when('/convocatoria', {
+                controller: 'convocatoriaController',
+                templateUrl: 'convocatoria/convocatoria.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/login', {
+                controller: 'LoginController',
+                templateUrl: 'login/login.view.html',
+                controllerAs: 'vm'
+            })
+
+
+            .when('/fileupload', {
+                controller: 'DatosGenerales',
+                templateUrl: 'fileupload/fileupload.view.html',
+                controllerAs: 'vm'
+            })
+
+
+            .when('/datossolicitud', {
+                controller: 'DatosSolicitud',
+                templateUrl: 'datossolicitud/datossolicitud.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/datossocioeco', {
+                controller: 'DatosSocioeco',
+                templateUrl: 'datossocioeco/datossocioeco.view.html',
+                controllerAs: 'vm'
+            })
+
+
+            .when('/datosacademicos', {
+                controller: 'DatosAcademicos',
+                templateUrl: 'datosacademicos/datosAcademicos.view.html',
+                controllerAs: 'vm'
+            })
+
+
+            .when('/domicilioResidencia', {
+                controller: 'DomicilioResidencia',
+                templateUrl: 'domicilioresidencia/domicilioResidencia.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/datosgenerales', {
+                controller: 'DatosGenerales',
+                templateUrl: 'datosgenerales/datGen.view.html',
+                controllerAs: 'vm'
+            })
+
+
+            .when('/mainform', {
+                controller: 'mainFormController',
+                templateUrl: 'mainform/mainform.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/register', {
+                controller: 'RegisterController',
+                templateUrl: 'register/register.view.html',
+                controllerAs: 'vm'
+            })
+
+
+            .when('/fileupload/:file', {
+                controller: 'FileController',
+                templateUrl: 'fileupload/fileupload.view.html',
+                controllerAs: 'vm'
+            })
+
+            .otherwise({redirectTo: '/login '});
+
+
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+
+    }
+
+    run.$inject = ['$rootScope', '$location', '$cookies', '$http', '$filter'];
+
+    function run($rootScope, $location, $cookies, $http, $filter) {
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookies.getObject('globals') || {};
+        if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        }
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in and trying to access a restricted page
+            var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/mainform',
+                '/domicilioResidencia', '/datosgenerales', '/datosacademicos', '/datossolicitud', '/datossocioeco', '/fileupload']) === -1;
+            var loggedIn = $rootScope.globals.currentUser;
+            if (restrictedPage && !loggedIn) {
+                $location.path('/login');
+            }
+        });
+    }
+
+})();

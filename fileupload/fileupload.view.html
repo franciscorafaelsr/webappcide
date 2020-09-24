@@ -1,0 +1,125 @@
+<!--  Hojas de estilo bootstrap  -->
+<!DOCTYPE html>
+
+<!--  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <div class="col-sm-8 col-sm-offset-2"> -->
+<div clas="row">
+
+
+    <div class="">
+        <toaster-container toaster-options="{'time-out': 3000, 'close-button':true}"></toaster-container>
+        <h1>{{vm.documento}}</h1>
+        <hr class=" col-sm-12 red">
+
+        <p ng-if="(vm.finalizado == false || vm.finalizado == undefined)">Seleciona un archivo en formato pdf, no mayor
+            a 5 MB: </p>
+
+
+        <!-- si ya esta finalizada la solicituda -->
+
+
+        <br/> </br>
+        <!-- sise pueden subir archivos -->
+
+        <form >
+
+
+
+
+
+            <div ng-if="(vm.finalizado == false || vm.finalizado == undefined)"  >
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="custom-file">
+                            <script>
+                                // Add the following code if you want the name of the file appear on select
+                                $(".custom-file-input").on("change", function () {
+                                    var fileName = $(this).val().split("\\").pop();
+                                    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                                });
+                            </script>
+
+                            <!--   <span   class="input-group-addon"><i class="fa fa-file-o fa-fw"></i></span>-->
+                            <input  ng-disabled="vm.loading" class="input-group btn btn-primary " file-model ="vm.files"  id="customFile" name="filename" lang="es"
+                                   select-ng-files
+                                   type="file" >
+                           <!-- <label  ng-disabled="vm.loading" class="custom-file-label" for="customFile">Seleciona archivo</label>-->
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a class=" ns_ btn btn-primary   fa fa-upload  form-control text-white"
+                           ng-disabled="vm.loading"
+                           ng-click="vm.uploadFile()" aria-hidden="true"
+                           type="submit"> &nbsp;
+                            Subir archivo
+                            <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                               ng-if="vm.loading"></i>
+
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a ng-disabled="(vm.fileid == undefined) || vm.loading"
+                           class=" ns_ btn btn-primary   fa fa-download  form-control text-white"
+                           ng-click="vm.getyFile()" aria-hidden="true"
+                            > &nbsp; Descargar el archivo
+                            <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                               ng-if="vm.loading"></i>
+
+                        </a>
+                    </div>
+
+                    <div class="col-md-2">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <br/> </br>
+
+
+    </div>
+
+    <div  ng-if="(vm.finalizado == true)">
+        <br/> </br>
+        <br/> </br>
+        <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <a class=" row btn btn-link" ng-click="vm.getyFile()"><h2>Descarga el archivo actual en tu
+                solicitud </h2>
+                <i class="fa fa-download text-primary" aria-hidden="true"></i>
+            </a>
+        </div>
+        </div>
+
+        <br/> </br>
+        <br/> </br>
+
+    </div>
+
+
+
+    <div class=" row">
+        <br/> </br>
+        <hr class="red">
+        <br/> </br>
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+                <a ng-disabled="vm.loading" class=" ns_ btn btn-primary  fa fa-home form-control" href="#!/mainform" aria-hidden="true"
+                   type="submit"> &nbsp; Menu principal&nbsp;<i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                                                ng-if="vm.loading"></i>
+                </a>
+            </div>
+
+            <div class="col-md-4"></div>
+    </div>
+
+</div>
+
+

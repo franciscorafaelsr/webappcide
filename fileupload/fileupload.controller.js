@@ -1,0 +1,169 @@
+﻿(function () {
+    'use strict';
+
+    angular
+        .module('app')
+        .controller('FileController', FileController);
+
+    FileController.$inject = ['$location', '$rootScope', '$q', '$scope', '$window', '$sce', 'FileService', '$routeParams','toaster'];
+
+    function FileController($location, $rootScope, $q, $scope, $window, $sce, FileService, $routeParams,toaster) {
+
+        var vm = this;
+        vm.uploadFile = uploadFile;
+        vm.getyFile = getyFile;
+        (function initController() {
+
+            // comprobar si ya se finalizo la captura
+            vm.loading = false;
+            vm.finalizado =($rootScope.globals.sesiondetails.locky === 1) ? true : false;
+            vm.fileid = undefined;
+
+            if ($routeParams.file == 'Foto') {
+                vm.documento = 'Fotografía del aspirante';
+                vm.fileid = $rootScope.globals.data.f1;
+            } else if ($routeParams.file == 'Acta') {
+                vm.documento = 'Acta de nacimiento';
+                vm.fileid = $rootScope.globals.data.f2;
+            } else if ($routeParams.file == 'Certificado de bachillerato o historial académico') {
+                vm.documento = 'Historial académico';
+                vm.fileid = $rootScope.globals.data.f3;
+            } else if ($routeParams.file == 'Comprobante') {
+                vm.documento = 'Comprobante de pago';
+                vm.fileid = $rootScope.globals.data.f4;
+            }else if ($routeParams.file == 'TituloL') {
+                vm.documento = 'Título licenciatura';
+                vm.fileid = $rootScope.globals.data.f5;
+            } else if ($routeParams.file == 'CertificadoP') {
+                vm.documento = 'Certificado con promedio';
+                vm.fileid = $rootScope.globals.data.f6;
+            }else if ($routeParams.file == 'CartaRecom') {
+                vm.documento = 'Carta recomendación académica';
+                vm.fileid = $rootScope.globals.data.f7;
+            }else if ($routeParams.file == 'CV') {
+                vm.documento = 'Curriculum vitae';
+                vm.fileid = $rootScope.globals.data.f8;
+            }else if ($routeParams.file == 'CartaRecom2') {
+                vm.documento = 'Carta recomendación académica 2';
+                vm.fileid = $rootScope.globals.data.f9;
+            }else if ($routeParams.file == 'Postulacion') {
+                vm.documento = 'Postulación';
+                vm.fileid = $rootScope.globals.data.f8;
+            }else if ($routeParams.file == 'Trabajoperio1') {
+                vm.documento = 'Trabajo periodístico 1';
+                vm.fileid = $rootScope.globals.data.f3;
+            }else if ($routeParams.file == 'Trabajoperio2') {
+                vm.documento = 'Trabajo periodístico 2';
+                vm.fileid = $rootScope.globals.data.f9;
+            }else if ($routeParams.file == 'Temainvestigacion') {
+                vm.documento = 'Tema de investigación periodística';
+                vm.fileid = $rootScope.globals.data.f4;
+            }else if ($routeParams.file == 'CartaMotivos') {
+                vm.documento = 'Carta de exposición de motivos';
+                vm.fileid = $rootScope.globals.data.f3;
+            }else if ($routeParams.file == 'ProyectoInvs') {
+                vm.documento = 'Proyecto de investigación';
+                vm.fileid = $rootScope.globals.data.f4;
+            }else if ($routeParams.file == 'TituloM') {
+                vm.documento = 'Título de maestría';
+                vm.fileid = $rootScope.globals.data.f9;
+            }
+
+        })();
+
+
+        function getyFile() {
+            if (vm.fileid != undefined) {
+                  var a = document.createElement("a");
+                    document.body.appendChild(a);
+
+
+                if ($routeParams.file == 'Foto') {
+                    FileService.getyFile(vm.fileid).then(function (response) {
+                        var  file = new Blob([response], {type: 'image/jpg'});
+                        a.download = "foto.jpg";
+                        var fileURL = window.URL.createObjectURL(file);
+                        a.href = fileURL;
+                        a.click();
+                    });
+                }else{
+                    FileService.getyFile(vm.fileid).then(function (response) {
+                        var  file = new Blob([response], {type: 'application/pdf'});
+                        a.download = "documento.pdf";
+                        var fileURL = window.URL.createObjectURL(file);
+                        a.href = fileURL;
+                        a.click();
+                    });
+                }
+
+
+                }
+
+            }
+
+
+        function uploadFile() {
+            try{
+                toaster.clear();
+            vm.loading = true;
+            toaster.pop('wait', "&nbsp; Cargando archivo", null, 5000, null);
+            try{
+            var fd = new FormData();
+            }catch(exception){
+                toaster.clear();
+                vm.loading = false;
+                toaster.pop('error', "No se pudo obtener archivo del formulario", '<ul><li>Ocurrio un error al tratar de anexar tu archivo a la solicitud</li></ul>', 5000, 'trustedHtml');
+                return;
+            }
+
+            if(fd != undefined &&vm.files != undefined){
+
+                try{
+                angular.forEach(vm.files, function (file) {
+                if(file.name == undefined || file == undefined){
+                    toaster.clear();
+                    vm.loading = false;
+                    toaster.pop('error', "Archivo con nombre invalido", '<ul><li>Ocurrio un error al tratar de anexar tu archivo a la solicitud</li></ul>', 5000, 'trustedHtml');
+                    return;
+                }
+
+                fd.append('selectedFile', file);
+                fd.append('fileName', file.name);
+                fd.append('seccion', $rootScope.globals.currentUser.idsesion);
+                fd.append('categoria', $routeParams.file);
+                    });
+                }catch(exception){
+                    console.log("no hay archico")
+                    vm.loading = false;
+                    toaster.pop('error', "No se ha seleccionado un archivo", '<ul><li>Ocurrio un error al tratar de anexar tu archivo a la solicitud</li></ul>', 5000, 'trustedHtml');
+                    return;
+                }
+
+
+                FileService.SaveFile(fd).then(function () {
+            //    $location.path('/mainform');
+                vm.loading = false;
+                toaster.pop('success', "Éxito", '<ul>Se anexo con exito tu archivo a tu solicitud</ul>', 5000, 'trustedHtml');
+                return;
+                });
+
+            } else{
+                toaster.clear();
+                vm.loading = false;
+                toaster.pop('error', "No se ha seleccionado un archivo", '<ul><li>Ocurrio un error al tratar de anexar tu archivo a la solicitud</li></ul>', 5000, 'trustedHtml');
+                return;
+            }
+
+            }catch(err){
+                toaster.clear();
+                vm.loading = false;
+                toaster.pop('error', "Fallo critico", '<ul><li>Ocurrio un error fatal al cargar el archivo</li><li>'+err+'</li></ul>', 5000, 'trustedHtml');
+                return;
+            }
+
+
+        }
+
+    }
+
+})();

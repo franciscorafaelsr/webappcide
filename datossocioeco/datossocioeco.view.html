@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+
+<div class="row">
+
+    <h1>Datos Socioeconómicos</h1>
+    <hr class=" col-sm-12 red">
+
+
+    <div class="row">
+
+            <!-- formulario datos catalogos-->
+            <div>
+                <!-- encabezdo seccion-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <label></label>
+                        <h2 debug-cve-control-ui="subtitu">Preguntas generales</h2>
+                        <hr class=" col-sm-12 red">
+                    </div>
+                </div>
+                <!-- fila codigo postal -->
+
+            </div>
+            <!-- fin seccion 2de datos catalogos -->
+
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Respuesta</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- ngRepeat: e in null -->
+                </tbody>
+                <tbody>
+
+
+                <tr>
+                    <td >
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Tienes computadora en casa?</label>
+                    </td>
+                    <td>
+                        <div class="form-group input-group margin-bottom-sm ">
+                            <span class="input-group-addon"><i class="fa fa-desktop fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                ng-model="vm.dsep1"
+                                ng-options="item.valor for item in  vm.computadoracasaoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                        </div>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td >
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Tienes acceso a Internet
+                            en casa?</label>
+                    </td>
+                    <td >
+                        <div class="form-group input-group margin-bottom-sm ">
+                            <span class="input-group-addon"><i class="fa fa-code-fork fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                ng-model="vm.dsep2"
+                                ng-options="item.valor for item in  vm.internetoptions"
+                                required="required">
+                            <option class=" "
+
+                                    value=" ">-- Selecciona una opción --
+                            </option>
+                        </select>
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                        </div>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td >
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿De quién dependes
+                            económicamente?</label>
+                    </td>
+                    <td >
+                        <div class="form-group input-group margin-bottom-sm ">
+                            <span class="input-group-addon"><i class="fa fa-sitemap fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                ng-model="vm.dsep3"
+                                ng-options="item.valor for item in  vm.dependesecoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td >
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Cuántas personas dependen
+                            de tu proveedor(a) ecónomico(a)?</label>
+                    </td>
+                    <td>
+
+                        <!--
+                             <input   ng-maxlength="256" placeholder="Descripción" direction="ltr"  class="ns_ form-control ng-pristine ng-untouched ng-valid ng-binding ng-valid-minlength ng-valid-maxlength ng-valid-required" type="text"  maxlength="256">
+                        -->
+                        <div class="form-group input-group margin-bottom-sm ">
+                            <span class="input-group-addon"><i class="fa fa-users fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                ng-model="vm.dsep4"
+                                ng-options="item.valor for item in  vm.numdepenoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                        </div>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td >
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Cuánto es el ingreso
+                            mensual de tu(s) proveedor(es) ecónomico(s)?</label>
+                    </td>
+                    <td >
+                        <div class="form-group input-group margin-bottom-sm ">
+                            <span class="input-group-addon"><i class="fa fa-money fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                ng-model="vm.dsep5"
+                                ng-options="item.valor for item in  vm.montomensualoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td >
+                        <label
+                               ng-required="0"
+                               tornado-field-type="label"> ¿Cuántas hermanos tienes?</label>
+                    </td>
+                    <td >
+                        <div class="form-group input-group margin-bottom-sm ">
+                            <span class="input-group-addon"><i class="fa fa-list-ol fa-fw"></i></span>
+                        <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                ng-model="vm.dsep6"
+                                ng-options="item.valor for item in  vm.numhermanosoptions"
+                                required="required">
+                            <option class=" " value=" ">-- Selecciona una opción --</option>
+                        </select>
+                            <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                        </div>
+
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label></label>
+                    <h2 debug-cve-control-ui="subtitu">Información Padres</h2>
+                    <hr class=" col-sm-12 red">
+                </div>
+            </div>
+
+
+            <!-- padre-->
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label></label>
+                        <h4 debug-cve-control-ui="subtitu">Datos del padre:</h4>
+                        <hr class=" col-sm-12 red">
+                    </div>
+                </div>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Pregunta</th>
+                        <th>Respuesta</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- ngRepeat: e in null -->
+                    </tbody>
+                    <tbody>
+
+
+                    <tr>
+                        <td>
+                            <label> Nombre completo
+                                :</label>
+                        </td>
+                        <td>
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-user-o fa-fw"></i></span>
+                            <input ng-disabled="vm.finalizado == true"  class="ns_ form-control "
+                                   direction="ltr" maxlength="256" ng-maxlength="256"
+                                   ng-model="vm.dsep7"
+                                   placeholder="Nombre del padre" type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Condición?</label>
+                        </td>
+                        <td >
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-heartbeat fa-fw"></i></span>
+                            <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                    ng-model="vm.dsep8"
+                                    ng-options="item.valor for item in  vm.padrecondicionoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Último grado de
+                                estudios?</label>
+                        </td>
+                        <td>
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap fa-fw"></i></span>
+                            <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                    ng-model="vm.dsep9"
+                                    ng-options="item.valor for item in  vm.padreeducacionoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Estatus del último
+                                grado de estudios?</label>
+                        </td>
+                        <td >
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-check-square-o fa-fw"></i></span>
+                            <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                    ng-model="vm.dsep10"
+                                    ng-options="item.valor for item in  vm.padreeducacionestatusoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Ocupación?</label>
+                        </td>
+                        <td >
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-suitcase fa-fw"></i></span>
+                            <input ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                   direction="ltr" maxlength="256"
+                                   ng-maxlength="256"
+                                   ng-model="vm.dsep11"
+                                   placeholder="Descripción Ocupación" type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Cuál es el ingreso
+                                mensual?</label>
+                        </td>
+                        <td >
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-money fa-fw"></i></span>
+                            <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                    ng-model="vm.dsep12"
+                                    ng-options="item.valor for item in  vm.padreingresoestatusoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- madre-->
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label></label>
+                        <h4 debug-cve-control-ui="subtitu">Datos del la madre:</h4>
+                        <hr class=" col-sm-12 red">
+                    </div>
+                </div>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Pregunta</th>
+                        <th>Respuesta</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- ngRepeat: e in null -->
+                    </tbody>
+                    <tbody>
+
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> Nombre completo
+                                :</label>
+                        </td>
+                        <td >
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-user-o fa-fw"></i></span>
+                            <input ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                   direction="ltr" maxlength="256"
+                                   ng-maxlength="256"
+                                   ng-model="vm.dsep13"
+                                   placeholder="Nombre del madre" type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Condición?</label>
+                        </td>
+                        <td >
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-heartbeat fa-fw"></i></span>
+                            <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                    ng-model="vm.dsep14"
+                                    ng-options="item.valor for item in  vm.madrecondicionoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Último grado de
+                                estudios?</label>
+                        </td>
+                        <td>
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap fa-fw"></i></span>
+                            <select  ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                    ng-model="vm.dsep15"
+                                    ng-options="item.valor for item in  vm.madreeducacionoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Estatus del último
+                                grado de estudios?</label>
+                        </td>
+                        <td >
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-check-square-o fa-fw"></i></span>
+                            <select ng-disabled="vm.finalizado == true" class="ns_ form-control"
+                                    ng-model="vm.dsep16"
+                                    ng-options="item.valor for item in  vm.madreeducacionestatusoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Ocupación?</label>
+                        </td>
+                        <td>
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-suitcase fa-fw"></i></span>
+                            <input ng-disabled="vm.finalizado == true"  class="ns_ form-control "
+                                   direction="ltr" maxlength="256"
+                                   ng-maxlength="256"
+                                   ng-model="vm.dsep17"
+                                   placeholder="Descripción Ocupación" type="text">
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td >
+                            <label
+                                   ng-required="0"
+                                   tornado-field-type="label"> ¿Cuál es el ingreso
+                                mensual?</label>
+                        </td>
+                        <td>
+                            <div class="form-group input-group margin-bottom-sm ">
+                                <span class="input-group-addon"><i class="fa fa-money fa-fw"></i></span>
+                            <select ng-disabled="vm.finalizado == true"  class="ns_ form-control"
+                                    ng-model="vm.dsep18"
+                                    ng-options="item.valor for item in  vm.madreingresoestatusoptions"
+                                    required="required">
+                                <option class=" " value=" ">-- Selecciona una opción --</option>
+                            </select>
+                                <span  ng-if="vm.finalizado == true" class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+    </div>
+
+
+    <!-- botones-->
+    <div class="row">
+        <br/> </br>
+        <hr class=" col-sm-12 red">
+        <br/> </br>
+        <div class="col-md-4">
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined)"  class="btn btn-primary  fa fa-chevron-left  form-control  " href="#!/datossolicitud"
+               ng-click="vm.saveData()"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+                <i aria-hidden="true" class="fa fa-floppy-o "></i>
+            </a>
+            <a ng-if="(vm.finalizado == true)"  class="btn btn-primary  fa fa-chevron-left  form-control  " href="#!/datossolicitud"
+               type="submit">
+                &nbsp; Anterior &nbsp;
+            </a>
+
+        </div>
+        <div class="col-md-4">
+            <a ng-if="(vm.finalizado == false || vm.finalizado == undefined)"  class="btn btn-primary form-control fa fa-home " href="#!/mainform" ng-click="vm.saveData()"
+               type="submit"> &nbsp; Pantalla principal &nbsp;
+                <i aria-hidden="true" class="fa fa-floppy-o"></i>
+            </a>
+            <a ng-if="(vm.finalizado == true)"  class="btn btn-primary form-control fa fa-home " href="#!/mainform"
+               type="submit"> &nbsp; Pantalla principal &nbsp;
+            </a>
+        </div>
+        <div class="col-md-4">
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+

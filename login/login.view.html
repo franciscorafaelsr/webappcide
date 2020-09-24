@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-12">
+        <div class="col-sm-12 " ng-class="">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label></label>
+                    <h2 debug-cve-control-ui="subtitu">Proceso de admisión 2021</h2>
+                    <hr class=" col-sm-12 red">
+                </div>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col-lg">
+                        <label class="control-label" title="Por favor, llena este campo es obligatorio" data-toggle="tooltip"  data-placement="top" tooltip>Correo electrónico <span class="field"><span
+                                class="required form-text"></span></span></label>
+                        <div class="form-group input-group margin-bottom-sm ">
+                            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                            <input class="form-control" title="Por favor, llena este campo es obligatorio" data-toggle="tooltip"  data-placement="top" tooltip
+                                   ng-model="vm.username" required="required" type="text">
+                            <div role="alert"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg">
+                        <label class="control-label"  title="Por favor, llena este campo es obligatorio" data-toggle="tooltip" tooltip >Contraseña<span class="field"><span
+                                class="required form-text"></span></span></label>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input class="form-control"  title="Por favor, llena este campo es obligatorio" data-toggle="tooltip" tooltip
+                                   ng-model="vm.password" required="required" type="password">
+                            <div role="alert"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="row">
+                <div class="col-lg-6"><a class="btn btn-primary form-control " ng-click="vm.login()" type="submit">
+                    &nbsp;Entrar&nbsp;
+                    <i class="fa fa-sign-in"></i></a>
+                </div>
+                <div class="col-lg-6"><a class="btn btn-primary col-md-2  form-control  " href="#!/register"
+                                         type="submit"> &nbsp;Crear cuenta nueva / Recuperar contraseña &nbsp;
+                    <i class="fa fa-id-card-o"></i></a>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class = "row" align="center">
+     <!--   <footer align="center">
+            Los campos con * son obligatorios
+        </footer> -->
+    </div>
+</div>
+
+
+
+

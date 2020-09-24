@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+
+<div class="row ng-scope">
+    <h1>Inscripción al proceso de admisión</h1>
+    <hr class="row col-sm-12 red">
+</div>
+
+<div class="row ng-scope ">
+    <i class="fa fa-pencil-square-o fa-3x fa-pull-left fa-border" aria-hidden="true"></i>
+    <h4>
+        Para llevar a cabo exitosamente tu inscripción debes completar todas las secciones.
+        Al finalizar podrás consultar tu solicitud, si todos los datos son correctos debes dar clic en el botón
+        Finalizar y enviar.
+        Se habilitará el botón Consulta tu solicitud, ahí encontrarás tu número de folio, con el cual te identificarás
+        durante el proceso de admisión.</h4>
+    <h2></h2>
+</div>
+
+
+
+
+<!---  secciones--->
+<div class="row ng-scope">
+    <div class="row">
+        <!-- primer grupo-->
+        <div class="row">
+            <div class="col-md-pull-3">
+                <div class=" row col-md-12">
+                    <h4>1. Datos del aspirante </h4>
+                </div>
+                <hr class=" row col-sm-12 red">
+                <div class="col-sm-12">
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+
+                            <a class="btn btn-link" href="#!/datosgenerales">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec1 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec1 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec1 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i>
+                                &nbsp; Información general &nbsp;
+                            </a>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link" href="#!/domicilioResidencia">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec2 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec2 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec2 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Domicilio residencia </a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="vm.convocatoria == 327">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link" href="#!/datosacademicos">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec3 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec3 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec3 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Información académica </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- segundo grupo-->
+        <div class="row">
+            <div class="col-md-push-3">
+
+                <div class="col-md-12">
+                    <h4 debug-cve-control-ui="subtitu">2. Datos solicitud</h4>
+                </div>
+
+                <hr class=" col-sm-12 red">
+
+                <div class="col-sm-12 ">
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link" href="#!/datossolicitud">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec4 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec4 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec4 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Programa deseado</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link" href="#!/datossocioeco">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec5 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec5 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec5 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Datos socioeconómicos</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- tercer grupo-->
+        <div class="row">
+            <div class="col-md-push-3">
+                <div class="col-md-12">
+                    <label></label>
+                    <h4 debug-cve-control-ui="subtitu">3. Documentos</h4>
+                </div>
+                <hr class=" col-sm-12 red">
+                <div class="col-sm-12 ">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Foto'}}">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec6 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec6 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec6 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Fotografía del aspirante</a>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="row"  ng-if="vm.convocatoria == 327">
+                        <div class="col-md-10">
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Acta'}}">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec7 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec7 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec7 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Acta de nacimiento</a>
+                        </div>
+                    </div>
+                        -->
+                    <div class="row"  ng-if="vm.convocatoria == 327">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Historial'}}">
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec8 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec8 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec8 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Historial académico o certificado de bachillerato</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="vm.convocatoria == 327">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Comprobante'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec9 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec9 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec9 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Comprobante de pago</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="(vm.convocatoria != 327) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'TituloL'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec7 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec7 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec7 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Título de licenciatura</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="(vm.convocatoria == 333) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'TituloM'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec17 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec17 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec17 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Título de maestría</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="(vm.convocatoria != 327) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'CertificadoP'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec8 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec8 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec8 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Certificado con promedio</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="(vm.convocatoria == 329  || vm.convocatoria == 330 || vm.convocatoria == 331 ||vm.convocatoria == 332) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'CartaRecom'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec10 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec10 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec10 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Carta de recomendación académica</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="( vm.convocatoria == 331 ) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'CartaRecom2'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec12 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec12 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec12 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Carta recomendación académica 2</a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row" ng-if="(vm.convocatoria == 329  || vm.convocatoria == 330 || vm.convocatoria == 331 ||vm.convocatoria == 333) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'CartaMotivos'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec9 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec9 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec9 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Carta de exposición de motivos</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="(vm.convocatoria == 330  || vm.convocatoria == 331 || vm.convocatoria == 333) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'CV'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec11 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec11 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec11 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Curriculum vitae</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="( vm.convocatoria == 332 ) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Postulacion'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec13 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec13 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec13 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Postulación</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="( vm.convocatoria == 332 ) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Trabajoperio1'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec14 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec14 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec14 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Trabajo periodístico 1</a>
+                        </div>
+                    </div>
+
+
+                    <div class="row" ng-if="( vm.convocatoria == 332 ) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Trabajoperio2'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec15 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec15 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec15 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Trabajo periodístico 2</a>
+                        </div>
+                    </div>
+
+
+                    <div class="row" ng-if="( vm.convocatoria == 332 ) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'Temainvestigacion'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec16 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec16 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec16 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Tema de investigación periodística</a>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="( vm.convocatoria == 333 ) ">
+                        <div class="col-md-10">
+                            <!-- estatus de la seccion -->
+                            <a class="btn btn-link"
+                               href="#!/fileupload/{{'ProyectoInvs'}}" >
+                                <i aria-hidden="true" class="fa fa-circle-o-notch fa-spin"
+                                   ng-if="((vm.sec18 == undefined) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-exclamation-triangle text-warning"
+                                   ng-if="((vm.sec18 == false)  && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i aria-hidden="true" class="fa fa-check text-success" ng-if="((vm.sec18 == true) && (vm.finalizado == false || vm.finalizado == undefined))"></i>
+                                <i class="fa fa-lock text-danger" aria-hidden="true" ng-if="vm.finalizado == true"></i> &nbsp;
+                                Proyecto de investigación</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- final grupo-->
+    </div>
+    <!-- final del data de grupos -->
+</div>
+<!-- final de hoja-->
+
+
+<!-- botones footer-->
+<div class="row">
+    <h1></h1>
+    <div class="col-md-4">
+</div>
+    <div ng-if="(vm.finalizado == false || vm.finalizado == undefined)" class="col-md-4">
+        <button class="ns_ form-control btn btn-primary fa fa-eye "  ng-click="vm.generarFicha()"
+                type="submit"> Vista previa de la solicitud
+        </button>
+    </div>
+
+    <div ng-if="!(vm.finalizado == false || vm.finalizado == undefined)" class="col-md-4">
+        <button class="ns_ form-control btn btn-primary fa fa-eye "  ng-click="vm.generarFicha()"
+                type="submit"> Consulta tu solicitud
+        </button>
+    </div>
+    <div ng-if="(vm.finalizado == false || vm.finalizado == undefined)" class="col-md-4">
+        <button   class="ns_ form-control btn btn-primary fa fa-paper-plane-o "  ng-click="vm.finalizarCaptura()"
+                ng-disabled="vm.secComp == false || vm.secComp == undefined" type="submit"> Finalizar y enviar
+
+
+        </button>
+    </div>
+</div>
+
+<modal-dialog show='modalShown1'
+              width='75'
+              height='75'
+              modal-user="user"
+              save-user="saveUser(user)"
+              template-user="./modals/aviso2.html"></modal-dialog>
+
+<modal-dialog show='modalShown'
+              width='75'
+              height='75'
+              modal-user="user"
+              save-user="saveUser(user)"
+              template-user="./modals/aviso1.html"></modal-dialog>
+
+

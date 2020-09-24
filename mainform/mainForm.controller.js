@@ -1,0 +1,522 @@
+(function () {
+    'use strict';
+
+    angular
+        .module('app')
+        .controller('mainFormController', mainFormController);
+
+    mainFormController.$inject = ['$location','$scope','$rootScope', '$http', '$sce', '$window', 'PdfService', 'CatService','AuthenticationService'];
+
+
+    function mainFormController($location,$scope,$rootScope, $http, $window, $sce, PdfService, CatService,AuthenticationService) {
+
+        var vm = this;
+        vm.generarFicha = generarFicha;
+        vm.fillData = fillData;
+        vm.fillData2 = fillData2;
+        vm.finalizarCaptura = finalizarCaptura;
+        vm.saveUser = saveUser;
+
+        (function initController() {
+            // init variables
+            vm.convocatoria =$rootScope.globals.convocatoria;
+            vm.finalizado = undefined;
+            vm.session =$rootScope.globals.currentUser.idsesion;
+            //init secciones
+            vm.sec1 = undefined; vm.sec2 = undefined;vm.sec3 = undefined;
+            vm.sec4 = undefined; vm.sec5 = undefined;vm.sec6 = undefined;
+            vm.sec7 = undefined; vm.sec8 = undefined;vm.sec9 = undefined;
+            vm.sec10 = undefined; vm.sec11 = undefined;vm.sec12 = undefined;
+            vm.sec13 = undefined; vm.sec14 = undefined;vm.sec15 = undefined;
+            vm.sec16 = undefined; vm.sec17 = undefined;vm.sec18 = undefined;
+            vm.sec19 = undefined; vm.sec20 = undefined;vm.sec21 = undefined;
+            //init control
+            vm.secComp = false;
+
+            // comprobar si ya se finalizo la captura
+            AuthenticationService.checkSession(vm.session).then(function (response){
+                $rootScope.globals.sesiondetails = response;
+                vm.finalizado =($rootScope.globals.sesiondetails.locky === 1) ? true : false;
+            });
+
+            //descargar datos y validar secciones
+            (vm.convocatoria === 327) ? fillData():fillData2();
+
+            // se comprueba si se ha subido algun archivo exitosamente !
+            if($rootScope.globals.refres == true){
+
+                vm.sec1 = undefined; vm.sec2 = undefined;vm.sec3 = undefined;
+                vm.sec4 = undefined; vm.sec5 = undefined;vm.sec6 = undefined;
+                vm.sec7 = undefined; vm.sec8 = undefined;vm.sec9 = undefined;
+                vm.sec10 = undefined; vm.sec11 = undefined;vm.sec12 = undefined;
+                vm.sec13 = undefined; vm.sec14 = undefined;vm.sec15 = undefined;
+                vm.sec16 = undefined; vm.sec17 = undefined;vm.sec18 = undefined;
+                vm.sec19 = undefined; vm.sec20 = undefined;vm.sec21 = undefined;
+
+                $rootScope.globals.refres =false;
+                CatService.datosGeneralesfill($rootScope.globals.currentUser.idsesion)
+                    .then(function (data) {
+                        $rootScope.globals.data = data;
+                        (vm.convocatoria === 327) ? checkseccion():checkseccion2();
+                    }).catch(function (err) {
+                    console.log(err);
+                });
+
+            }else{
+                $rootScope.globals.refres =false;
+
+            }
+
+            if( $rootScope.globals.modalinit == false ||  $rootScope.globals.modalinit == undefined)
+            $scope.modalShown = !$scope.modalShown;
+
+        })();
+
+
+
+        function saveUser(){
+            $rootScope.globals.modalinit = true;
+        //    $scope.userMod = usr;
+     //       $window.alert('Desde metodo SALVAR del controller fuera de la ventana: ' + $scope.userMod.shortKey);
+
+        }
+
+        function generarFicha() {
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            PdfService.GetFicha(vm.session).then(function (response) {
+                var file = new Blob([response], {type: 'application/pdf'});
+                var fileName = "ficha.pdf";
+                var fileURL = window.URL.createObjectURL(file);
+                a.href = fileURL;
+                a.download = fileName;
+                a.click();
+            });
+        }
+
+        function finalizarCaptura(){
+
+
+            $scope.modalShown1 = !$scope.modalShown1;
+            AuthenticationService.endChapter(vm.session).then(function (response){
+                $rootScope.globals.sesiondetails = response;
+                vm.finalizado =($rootScope.globals.sesiondetails.locky === 1) ? true : false;
+                $location.path('/mainform');
+                generarFicha();
+            });
+        }
+
+
+        function fillData2() {
+            if ($rootScope.globals.data == undefined) {
+                CatService.datosGeneralesfill($rootScope.globals.currentUser.idsesion)
+                    .then(function (data) {
+                        $rootScope.globals.data = data;
+                        checkseccion2();
+                    }).catch(function (err) {
+                    console.log(err);
+                });
+            } else {
+                checkseccion2();
+            }
+        }
+
+        function fillData() {
+                 if ($rootScope.globals.data == undefined) {
+            CatService.datosGeneralesfill($rootScope.globals.currentUser.idsesion)
+                .then(function (data) {
+                    $rootScope.globals.data = data;
+                    checkseccion();
+                }).catch(function (err) {
+                console.log(err);
+            });
+                 } else {
+                checkseccion();
+              }
+        }
+
+        // private functions
+        function checkseccion() {
+            vm.secComp = true;
+
+            if ($rootScope.globals.data.curp && $rootScope.globals.data.idNacionalidad
+                && $rootScope.globals.data.idCivil && $rootScope.globals.data.emergenciaNombre
+                && $rootScope.globals.data.emergenciaCelular && $rootScope.globals.data.emergenciaTelefono
+            ) {
+                vm.sec1 = true;
+            } else {
+                vm.sec1 = false;
+                vm.secComp = false;
+            }
+
+            if ($rootScope.globals.data.codigoPostal) {
+                vm.sec2 = true;
+            } else {
+                vm.sec2 = false;
+                vm.secComp = false;
+            }
+            if ($rootScope.globals.data.daBecado && $rootScope.globals.data.daPromedio && $rootScope.globals.data.daSemestre
+                && $rootScope.globals.data.daBoleta && $rootScope.globals.data.daSitioWeb && $rootScope.globals.data.daEscuela
+                && $rootScope.globals.data.daEntidadFederativa) {
+                vm.sec3 = true;
+            } else {
+                vm.sec3 = false;
+                vm.secComp = false;
+            }
+            if ($rootScope.globals.data.dsp1 && $rootScope.globals.data.dsp2 && $rootScope.globals.data.dsp3
+                && $rootScope.globals.data.dsp4 && $rootScope.globals.data.dsp5 && $rootScope.globals.data.dsp6) {
+                vm.sec4 = true;
+            } else {
+                vm.sec4 = false;
+                vm.secComp = false;
+            }
+            if ($rootScope.globals.data.dsep1 && $rootScope.globals.data.dsep2 && $rootScope.globals.data.dsep3 && $rootScope.globals.data.dsep4 && $rootScope.globals.data.dsep5
+                && $rootScope.globals.data.dsep6 && $rootScope.globals.data.dsep7 && $rootScope.globals.data.dsep8 && $rootScope.globals.data.dsep9 && $rootScope.globals.data.dsep10
+                && $rootScope.globals.data.dsep11 && $rootScope.globals.data.dsep12 && $rootScope.globals.data.dsep13 && $rootScope.globals.data.dsep14 && $rootScope.globals.data.dsep15
+                && $rootScope.globals.data.dsep16 && $rootScope.globals.data.dsep17 && $rootScope.globals.data.dsep18) {
+                vm.sec5 = true;
+            } else {
+                vm.sec5 = false;
+                vm.secComp = false;
+            }
+
+            if ($rootScope.globals.data.f1 != undefined) {
+                vm.sec6 = true;
+
+            } else {
+                vm.sec6 = false;
+                vm.secComp = false;
+            }
+/*
+            if ($rootScope.globals.data.f2 != undefined) {
+                vm.sec7 = true;
+
+            } else {
+                vm.sec7 = false;
+                vm.secComp = false;
+            }*/
+            vm.sec7 = true;
+            if ($rootScope.globals.data.f3 != undefined) {
+                vm.sec8 = true;
+
+            } else {
+                vm.sec8 = false;
+                vm.secComp = false;
+            }
+            if ($rootScope.globals.data.f4 != undefined) {
+                vm.sec9 = true;
+
+            } else {
+                vm.sec9 = false;
+                vm.secComp = false;
+            }
+
+        }
+
+        function checkseccion2() {
+            vm.secComp = true;
+
+            if ($rootScope.globals.data.curp && $rootScope.globals.data.idNacionalidad
+                && $rootScope.globals.data.idCivil && $rootScope.globals.data.emergenciaNombre
+                && $rootScope.globals.data.emergenciaCelular && $rootScope.globals.data.emergenciaTelefono
+            ) {
+                vm.sec1 = true;
+            } else {
+                vm.sec1 = false;
+                vm.secComp = false;
+            }
+
+            if ($rootScope.globals.data.codigoPostal && $rootScope.globals.data.calle && $rootScope.globals.data.numeroExterior) {
+                vm.sec2 = true;
+            } else {
+                vm.sec2 = false;
+                vm.secComp = false;
+            }
+
+//falta implementar nueva version academica
+            /*
+            if ($rootScope.globals.data.daBecado && $rootScope.globals.data.daPromedio && $rootScope.globals.data.daSemestre
+                && $rootScope.globals.data.daBoleta && $rootScope.globals.data.daSitioWeb && $rootScope.globals.data.daEscuela
+                && $rootScope.globals.data.daEntidadFederativa) {
+                vm.sec3 = true;
+            } else {
+                vm.sec3 = false;
+                vm.secComp = false;
+            }
+*/
+            vm.sec3 = true;
+
+            // falta actualizar el programa relacionado
+            if ($rootScope.globals.data.dsp2 && $rootScope.globals.data.dsp3
+                && $rootScope.globals.data.dsp4 && $rootScope.globals.data.dsp5 && $rootScope.globals.data.dsp6) {
+                vm.sec4 = true;
+            } else {
+                vm.sec4 = false;
+                vm.secComp = false;
+            }
+
+            if ($rootScope.globals.data.dsep1 && $rootScope.globals.data.dsep2 && $rootScope.globals.data.dsep3 && $rootScope.globals.data.dsep4 && $rootScope.globals.data.dsep5
+                && $rootScope.globals.data.dsep6 && $rootScope.globals.data.dsep7 && $rootScope.globals.data.dsep8 && $rootScope.globals.data.dsep9 && $rootScope.globals.data.dsep10
+                && $rootScope.globals.data.dsep11 && $rootScope.globals.data.dsep12 && $rootScope.globals.data.dsep13 && $rootScope.globals.data.dsep14 && $rootScope.globals.data.dsep15
+                && $rootScope.globals.data.dsep16 && $rootScope.globals.data.dsep17 && $rootScope.globals.data.dsep18) {
+                vm.sec5 = true;
+            } else {
+                vm.sec5 = false;
+                vm.secComp = false;
+            }
+
+
+            if ($rootScope.globals.data.f1 != undefined) {
+                vm.sec6 = true;
+
+            } else {
+                vm.sec6 = false;
+                vm.secComp = false;
+            }
+            //MAPP
+            if(vm.convocatoria === 328){
+
+            if($rootScope.globals.data.f5 != undefined ){
+                vm.sec7 =true;
+            }else{
+                vm.sec7 =false;
+                vm.secComp = false;
+            }
+            if($rootScope.globals.data.f6 != undefined ){
+                    vm.sec8 =true;
+            }else{
+                    vm.sec8 =false;
+                    vm.secComp = false;
+                }
+
+            }
+            //ME
+            if(vm.convocatoria === 329){
+
+                if($rootScope.globals.data.f5 != undefined ){
+                    vm.sec7 =true;
+                }else{
+                    vm.sec7 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f6 != undefined ){
+                    vm.sec8 =true;
+                }else{
+                    vm.sec8 =false;
+                    vm.secComp = false;
+                }
+
+                if($rootScope.globals.data.f3 != undefined ){
+                    vm.sec9 =true;
+                }else{
+                    vm.sec9 =false;
+                    vm.secComp = false;
+                }
+
+                if($rootScope.globals.data.f7 != undefined ){
+                    vm.sec10 =true;
+                }else{
+                    vm.sec10 =false;
+                    vm.secComp = false;
+                }
+            }
+            //MAEA
+            if(vm.convocatoria === 330){
+                if($rootScope.globals.data.f5 != undefined ){
+                    vm.sec7 =true;
+                }else{
+                    vm.sec7 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f6 != undefined ){
+                    vm.sec8 =true;
+                }else{
+                    vm.sec8 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f7 != undefined ){
+                    vm.sec10 =true;
+                }else{
+                    vm.sec10 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f3 != undefined ){
+                    vm.sec9 =true;
+                }else{
+                    vm.sec9 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f8 != undefined ){
+                    vm.sec11 =true;
+                }else{
+                    vm.sec11 =false;
+                    vm.secComp = false;
+                }
+            }
+            //METPOL
+            if(vm.convocatoria === 331){
+                if($rootScope.globals.data.f5 != undefined ){
+                    vm.sec7 =true;
+                }else{
+                    vm.sec7 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f6 != undefined ){
+                    vm.sec8 =true;
+                }else{
+                    vm.sec8 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f8 != undefined ){
+                    vm.sec11 =true;
+                }else{
+                    vm.sec11 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f3 != undefined ){
+                    vm.sec9 =true;
+                }else{
+                    vm.sec9 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f7 != undefined ){
+                    vm.sec10 =true;
+                }else{
+                    vm.sec10 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f9 != undefined ){
+                    vm.sec12 =true;
+                }else{
+                    vm.sec12 =false;
+                    vm.secComp = false;
+                }
+            }
+            //DPP
+            if(vm.convocatoria === 333){
+
+                if($rootScope.globals.data.f5 != undefined ){
+                    vm.sec7 =true;
+                }else{
+                    vm.sec7 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f6 != undefined ){
+                    vm.sec8 =true;
+                }else{
+                    vm.sec8 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f9 != undefined ){
+                    vm.sec17 =true;
+                }else{
+                    vm.sec17 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f8 != undefined ){
+                    vm.sec11 =true;
+                }else{
+                    vm.sec11 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f3 != undefined ){
+                    vm.sec9 =true;
+                }else{
+                    vm.sec9 =false;
+                    vm.secComp = false;
+                } if($rootScope.globals.data.f4 != undefined ){
+                    vm.sec18 =true;
+                }else{
+                    vm.sec18 =false;
+                    vm.secComp = false;
+                }
+
+            }
+            //MPPP
+            if(vm.convocatoria === 332){
+
+                if($rootScope.globals.data.f5 != undefined ){
+                    vm.sec7 =true;
+                }else{
+                    vm.sec7 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f6 != undefined ){
+                    vm.sec8 =true;
+                }else{
+                    vm.sec8 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f7 != undefined ){
+                    vm.sec10 =true;
+                }else{
+                    vm.sec10 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f8 != undefined ){
+                    vm.sec13 =true;
+                }else{
+                    vm.sec13 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f3 != undefined ){
+                    vm.sec14 =true;
+                }else{
+                    vm.sec14 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f9 != undefined ){
+                    vm.sec15 =true;
+                }else{
+                    vm.sec15 =false;
+                    vm.secComp = false;
+                }
+                if($rootScope.globals.data.f4 != undefined ){
+                    vm.sec16 =true;
+                }else{
+                    vm.sec16 =false;
+                    vm.secComp = false;
+                }
+
+            }
+
+
+        }
+
+        /*
+        ]
+
+                function consultaCurp() {
+
+                    console.log("vamos buscar curp");
+                    $http.post('API/CURP/json/', { curp: vm.curp })
+                        .then(function (response) {
+                            vm.persona = angular.fromJson(response.data);
+
+                        });
+
+
+                    // $http({
+                    //     method: 'GET',
+                    //     url: 'API/CURP/json/'+'CARV670728HDGRDC01'
+                    // }).then(function (response) {
+                    //
+                    //     console.log("encontramos el curp");
+                    //     vm.persona = angular.fromJson(response.data);
+                    //
+                    //
+                    //     }, function (response) {
+                    //
+                    //     console.log("no funciona el servicio curp"+ response.status);
+                    //
+                    // });
+
+
+
+                }
+        */
+
+
+    }
+
+})();

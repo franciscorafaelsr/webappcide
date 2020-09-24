@@ -1,0 +1,29 @@
+﻿<div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-12 datasecOdd" ng-class="$even ? 'datasecEven' : 'datasecOdd'">
+        <h2>Selecciona el proceso de admisión en el que participar.</h2>
+        <form name="form" ng-submit="vm.register()" role="form">
+            <div class="col-md-4">
+                <label class="control-label ">Convocatoria<span class="field">
+		            </span></label>
+                <div class="form-group   input-group margin-bottom-sm ">
+                    <span  class="input-group-addon"><i class=" fa fa-sliders"></i></span>
+                    <select class="ns_ form-control"
+                            ng-model="vm.convocatoriachoose"
+                            ng-options="item.valor for item in vm.convocatoriaoptions"
+                            required="required">
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-actions">
+                <a class="btn btn-primary   form-control "  ng-click="vm.login()"
+                   type="submit">Entrar
+                    <i aria-hidden="true" class="fa fa-chevron-right"></i>
+
+                </a>
+
+
+            </div>
+        </form>
+    </div>
+</div>

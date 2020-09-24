@@ -1,0 +1,42 @@
+(function () {
+    'use strict';
+
+    angular
+        .module('app')
+        .factory('PdfService', PdfService);
+
+    PdfService.$inject = ['$http', '$q'];
+
+    function PdfService($http, $q) {
+        var service = {};
+
+        service.GetFicha = GetFicha;
+        return service;
+
+        //public functions
+
+        function GetFicha(ficha) {
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            return $http.post('ficha', {iduser: ficha}, {responseType: 'arraybuffer'}).then(function (data) {
+                return handleSuccess(data);
+            }, handleError('Error getting pdf'));
+            return promise;
+        }
+
+
+        // private functions
+        function handleSuccess(res) {
+            return res.data;
+        }
+
+        function handleError(error) {
+            return function () {
+                console.log("nO Se EncOntrO cAtalOgO");
+                return {success: false, message: error};
+            };
+        }
+    }
+
+})();

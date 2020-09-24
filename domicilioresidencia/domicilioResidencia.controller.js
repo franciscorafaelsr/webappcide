@@ -1,0 +1,79 @@
+(function () {
+    'use strict';
+
+    angular
+        .module('app')
+        .controller('DomicilioResidencia', DomicilioResidencia);
+
+    DomicilioResidencia.$inject = ['$http', 'CatService', '$rootScope'];
+
+    function DomicilioResidencia($http, CatService, $rootScope) {
+
+        var vm = this;
+        vm.consultaCp = consultaCp;
+        vm.saveData = saveData;
+        vm.fillData = fillData;
+
+
+        (function initController() {
+            // init domicilio
+            // comprobar si ya se finalizo la captura
+            vm.convocatoria =$rootScope.globals.convocatoria;
+            vm.finalizado =($rootScope.globals.sesiondetails.locky === 1) ? true : false;
+            fillData();
+        })();
+
+
+// private functions
+        function saveData() {
+            CatService.datosDomiciliosave(
+                $rootScope.globals.currentUser.idsesion,
+                vm.cp,
+                vm.pais, vm.estado, vm.mnpio,
+                vm.ciudad, vm.tipoAsenta, vm.asenta,
+                vm.calle, vm.numext, vm.numint
+            )
+                .then(function (data) {
+                    console.log(data);
+                }).catch(function (err) {
+                console.log(err);
+            });
+        }
+
+        function fillData() {
+            CatService.datosGeneralesfill($rootScope.globals.currentUser.idsesion)
+                .then(function (data) {
+                    vm.cp = data.codigoPostal;
+                    vm.pais = data.pais;
+                    vm.estado = data.estado;
+                    vm.mnpio = data.municipio;
+                    vm.ciudad = data.ciudad;
+                    vm.tipoAsenta = data.asentamiento;
+                    vm.asenta = data.nombreasentamiento;
+                    vm.calle = data.calle;
+                    vm.numext = data.numeroExterior;
+                    vm.numint = data.numerointerior;
+                }).catch(function (err) {
+                console.log(err);
+            });
+        }
+
+        function consultaCp() {
+            $http.post('API/CP/json/', {CP: vm.cp})
+                .then(function (response) {
+                    vm.pais = 'México';
+                    vm.estado = response.data.estado;
+                    vm.mnpio = response.data.mnpio;
+                    vm.ciudad = response.data.ciudad;
+                    vm.tipoAsenta = response.data.tipoAsenta;
+                    vm.asenta = response.data.asenta;
+
+                });
+
+
+        }
+
+
+    }
+
+})();
